@@ -1,0 +1,258 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="26.1.1">
+  <diagram name="第 1 页" id="Cm_feaSEWDEX9tduUfAY">
+    <mxGraphModel dx="2860" dy="1715" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-28" value="KyuubiServer" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-975" y="-237" width="1609" height="1753" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-29" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="pz1pUzjrbZIfEoaEPdII-3" target="pz1pUzjrbZIfEoaEPdII-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-3" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KinitAuxiliaryService&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="-950" y="-65" width="127" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-30" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="pz1pUzjrbZIfEoaEPdII-4" target="pz1pUzjrbZIfEoaEPdII-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-4" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;PeriodicGCService&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="-708" y="-65" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-31" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="pz1pUzjrbZIfEoaEPdII-5" target="pz1pUzjrbZIfEoaEPdII-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-5" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;MetricsSystem&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="-476" y="-65" width="128" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-32" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="pz1pUzjrbZIfEoaEPdII-6" target="pz1pUzjrbZIfEoaEPdII-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-39" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=0.449;entryY=-0.002;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="pz1pUzjrbZIfEoaEPdII-6" target="pz1pUzjrbZIfEoaEPdII-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-6" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiBackendService&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;初始化KyuubiSessionManager&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-280" y="-63" width="173" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-33" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="pz1pUzjrbZIfEoaEPdII-7" target="pz1pUzjrbZIfEoaEPdII-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-7" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiRestFrontendService&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-57" y="-165" width="329" height="244" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-8" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiTBinaryFrontendService&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="313" y="-190" width="288" height="299" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-45" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;JettyServer&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-22" y="-118" width="242" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-46" value="KyuubiBatchService" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-20" y="-16" width="242" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-50" value="&lt;span style=&quot;text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;TBinaryFrontendService&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Handler-Pool&quot;&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;构建fe线程池处理beeline请求&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;9-999&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="331" y="-142" width="265" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-53" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiServiceDiscovery&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;zookeeper初始化&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="367" y="-2" width="187" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-27" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pz1pUzjrbZIfEoaEPdII-18" target="8VjmFdDd3WvxLmGS-bPU-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-18" value="KyuubiSessionManager" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-784" y="134" width="1315" height="507" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-65" value="initlized" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-762" y="168" width="1262" height="312" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-61" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="-735" y="190" width="1147" height="281" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-41" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-12" target="pz1pUzjrbZIfEoaEPdII-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="848.9444444444443" y="243.85929541292623" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-12" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;HadoopCredentialsManager&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;hdfs认证相关&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry x="912.6666666666666" y="219.23599763961235" width="200.41666666666666" height="47.27451277540985" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-42" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-13" target="pz1pUzjrbZIfEoaEPdII-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-13" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;TempFileService&lt;/span&gt;&lt;div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;name-cleanup-scheduler线程&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;删除临时文件&lt;/span&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry x="577.6111111111111" y="209.56944470754496" width="270.30555555555554" height="66.60761863954475" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-43" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-14" target="pz1pUzjrbZIfEoaEPdII-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-14" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;MetadataManager&lt;/span&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;创建元数据表&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry x="349.4444444444444" y="205.94922159829807" width="158.27777777777777" height="73.04407309684353" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-21" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-15" target="pz1pUzjrbZIfEoaEPdII-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-15" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;background-color: rgb(248, 248, 251);&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;sessionLimiter&lt;br&gt;限制同一个用户、地址能启动多少个会话&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry y="-4.117216117216117" width="192.19" height="55.15010989010988" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-23" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-16" target="pz1pUzjrbZIfEoaEPdII-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-16" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;engineStartupProcessSemaphore&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;控制同一时刻可以启动多少engine&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry x="241.52777777777774" y="6.22501108780792" width="260.02777777777777" height="41.19178765532327" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-17" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiOperationManager&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;初始化日志插件&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry x="12.333333333333332" y="198.32374143983643" width="194.24999999999997" height="82.67625856016355" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-37" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=-0.004;entryY=0.157;entryDx=0;entryDy=0;entryPerimeter=0;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-22" target="pz1pUzjrbZIfEoaEPdII-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-22" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;name-exec-pool线程池&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;100大小，100的队列&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+          <mxGeometry x="570.4166666666666" width="260.02777777777777" height="47.41679874313118" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-35" value="" style="group" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1" connectable="0">
+          <mxGeometry x="870.5277777777777" y="6.081373234407548" width="276.4722222222222" height="178.9981131933638" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-11" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiApplicationManager&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;verticalAlign=top;" parent="pz1pUzjrbZIfEoaEPdII-35" vertex="1">
+          <mxGeometry width="276.4722222222222" height="178.9981131933638" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-25" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KubernetesApplicationOperation&lt;/span&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;创建k8s engine 完成的任务监控、清理线程&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="pz1pUzjrbZIfEoaEPdII-35" vertex="1">
+          <mxGeometry x="15.416666666666664" y="39.331423975223444" width="243.58333333333331" height="57.79311277992015" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-26" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;YarnApplicationOperation&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="pz1pUzjrbZIfEoaEPdII-35" vertex="1">
+          <mxGeometry x="14.388888888888888" y="117.99427192567032" width="243.58333333333331" height="19.26437092664005" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-27" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;JpsApplicationOperation&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="pz1pUzjrbZIfEoaEPdII-35" vertex="1">
+          <mxGeometry x="15.416666666666664" y="142.28596772132389" width="243.58333333333331" height="20.65814393853971" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-38" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-11" target="pz1pUzjrbZIfEoaEPdII-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-66" value="started" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-729" y="514" width="579" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-57" value="设置session失效定时器" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-698" y="563" width="191" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-58" value="依次启动内部的服务" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-464" y="564" width="191" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-67" value="Beeline" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-947" y="-686" width="1587" height="327" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-1" value="KyuubiConnection" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="318" y="-633" width="281" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-2" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;openTransport&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="367" y="-583" width="176" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-3" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;openSession&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="372.5" y="-513" width="176" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-4" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;DatabaseConnection&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-97" y="-630" width="283" height="203" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-5" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;getConnectionFromLocalDriver&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-73.5" y="-506.5" width="236" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-6" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiBeeLine&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-784" y="-638" width="283" height="233" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-7" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;mainWithInputRedirection&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-753.5" y="-600" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-8" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;begin&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-753.5" y="-547.5" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-9" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;execute&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-758" y="-497.5" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-10" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;dispatch&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-756" y="-451" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-11" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiCommands&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-454" y="-636" width="283" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-12" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;sql&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-429" y="-588" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-13" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;execute&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-429" y="-537" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-14" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;executeInternal&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-432" y="-484" width="222" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-15" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;connection&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-73.5" y="-584" width="236" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-16" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="NNW8h8ZM20n6S6CJqxvk-1" target="pz1pUzjrbZIfEoaEPdII-8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-159" y="-237" as="sourcePoint" />
+            <mxPoint x="-109" y="-287" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NNW8h8ZM20n6S6CJqxvk-17" value="thrfit RPC远程调用" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="NNW8h8ZM20n6S6CJqxvk-16" vertex="1" connectable="0">
+          <mxGeometry x="-0.097" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-1" value="" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-769" y="1007" width="1305" height="446" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-8" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiSessionImpl&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-310" y="675" width="379" height="274" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-9" value="open" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-256" y="714" width="264" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-10" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;runOperation(launchEngineOp)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-253.5" y="772" width="266" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-11" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;openEngineSession&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-253.5" y="830" width="266" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-12" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;EngineRef.getOrCreate&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-253.5" y="888" width="266" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-16" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;SparkProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-750" y="1070" width="149" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-17" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;FlinkProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-522" y="1070" width="133.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-18" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;TrinoProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-311" y="1070" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-19" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;HiveProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-92" y="1070" width="152" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-20" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;JdbcProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="128" y="1070" width="152" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-21" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;ChatProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="348" y="1070" width="152" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-22" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8VjmFdDd3WvxLmGS-bPU-8" target="8VjmFdDd3WvxLmGS-bPU-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-3" y="1127" as="sourcePoint" />
+            <mxPoint x="47" y="1077" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-23" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="8VjmFdDd3WvxLmGS-bPU-22">
+          <mxGeometry x="-0.0303" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-24" value="engineType" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="8VjmFdDd3WvxLmGS-bPU-22">
+          <mxGeometry x="-0.0033" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-25" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;main&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-758" y="1254" width="149" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-26" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;main&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-311" y="1254" width="149" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
