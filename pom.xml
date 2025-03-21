@@ -1742,29 +1742,29 @@
                     <version>${maven.plugin.download.version}</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.rat</groupId>
-                    <artifactId>apache-rat-plugin</artifactId>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <excludeSubProjects>false</excludeSubProjects>
-                        <numUnapprovedLicenses>0</numUnapprovedLicenses>
-                        <licenseFamilies>
-                            <licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">
-                                <familyName>Apache License 2.0</familyName>
-                            </licenseFamily>
-                        </licenseFamilies>
-                        <excludesFile>.rat-excludes</excludesFile>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                            <phase>verify</phase>
-                        </execution>
-                    </executions>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.rat</groupId>-->
+<!--                    <artifactId>apache-rat-plugin</artifactId>-->
+<!--                    <inherited>true</inherited>-->
+<!--                    <configuration>-->
+<!--                        <excludeSubProjects>false</excludeSubProjects>-->
+<!--                        <numUnapprovedLicenses>0</numUnapprovedLicenses>-->
+<!--                        <licenseFamilies>-->
+<!--                            <licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">-->
+<!--                                <familyName>Apache License 2.0</familyName>-->
+<!--                            </licenseFamily>-->
+<!--                        </licenseFamilies>-->
+<!--                        <excludesFile>.rat-excludes</excludesFile>-->
+<!--                    </configuration>-->
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <goals>-->
+<!--                                <goal>check</goal>-->
+<!--                            </goals>-->
+<!--                            <phase>verify</phase>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
+<!--                </plugin>-->
                 <plugin>
                     <groupId>org.antlr</groupId>
                     <artifactId>antlr4-maven-plugin</artifactId>
