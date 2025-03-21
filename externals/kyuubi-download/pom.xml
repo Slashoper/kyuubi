@@ -65,17 +65,17 @@
                             <url>${flink.archive.mirror}/${flink.archive.name}</url>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>download-hive-release</id>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <phase>compile</phase>
-                        <configuration>
-                            <skip>${hive.archive.download.skip}</skip>
-                            <url>${hive.archive.mirror}/${hive.archive.name}</url>
-                        </configuration>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>download-hive-release</id>-->
+<!--                        <goals>-->
+<!--                            <goal>wget</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>compile</phase>-->
+<!--                        <configuration>-->
+<!--                            <skip>${hive.archive.download.skip}</skip>-->
+<!--                            <url>${hive.archive.mirror}/${hive.archive.name}</url>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
 
