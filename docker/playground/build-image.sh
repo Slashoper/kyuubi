@@ -20,8 +20,8 @@
 set -e
 
 APACHE_MIRROR=${APACHE_MIRROR:-https://dlcdn.apache.org}
-BDP_KYUUBI_MIRROR=${BDP_KYUUBI_MIRROR:-http://10.2.19.48/bdp}
-BDP_KYUUBI_SPARK_MIRROR=${BDP_KYUUBI_SPARK_MIRROR:-http://10.2.19.48/bdp/kyuubi}
+#BDP_KYUUBI_MIRROR=${BDP_KYUUBI_MIRROR:-http://10.2.19.48/bdp}
+#BDP_KYUUBI_SPARK_MIRROR=${BDP_KYUUBI_SPARK_MIRROR:-http://10.2.19.48/bdp/kyuubi}
 MAVEN_MIRROR=${MAVEN_MIRROR:-https://maven-central-asia.storage-download.googleapis.com/maven2}
 #MAVEN_MIRROR=${MAVEN_MIRROR:-https://maven-central-asia.storage-download.googleapis.com/maven2}
 BUILD_CMD="docker build"

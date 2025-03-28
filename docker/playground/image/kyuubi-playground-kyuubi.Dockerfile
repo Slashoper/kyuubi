@@ -26,10 +26,10 @@ ENV KYUUBI_HOME=/opt/kyuubi
 ENV KYUUBI_CONF_DIR=/etc/kyuubi/conf
 
 RUN set -x && \
-    wget -q ${BDP_KYUUBI_MIRROR}/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
+    wget -q http://10.2.19.48/bdp/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
     tar -xzf apache-kyuubi-${KYUUBI_VERSION}-bin.tgz -C /opt && \
     ln -s /opt/apache-kyuubi-${KYUUBI_VERSION}-bin ${KYUUBI_HOME} && \
-    rm apache-kyuubi-${KYUUBI_VERSION}-bin.tgz
+    rm apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
 #    HADOOP_CLOUD_STORAGE_JAR_NAME=hadoop-cloud-storage && \
 #    wget -q ${MAVEN_MIRROR}/org/apache/hadoop/${HADOOP_CLOUD_STORAGE_JAR_NAME}/${KYUUBI_HADOOP_VERSION}/${HADOOP_CLOUD_STORAGE_JAR_NAME}-${KYUUBI_HADOOP_VERSION}.jar -P ${KYUUBI_HOME}/jars && \
 #    HADOOP_AWS_JAR_NAME=hadoop-aws && \

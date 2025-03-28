@@ -24,7 +24,6 @@ ARG SPARK_VERSION
 ARG SPARK_BINARY_VERSION
 
 ARG APACHE_MIRROR
-ARG BDP_KYUUBI_SPARK_MIRROR
 ARG MAVEN_MIRROR
 
 ENV SPARK_HOME=/opt/spark
@@ -33,7 +32,7 @@ ENV HIVE_CONF_DIR=/etc/hive/conf
 ENV SPARK_CONF_DIR=/etc/spark/conf
 
 RUN set -x && \
-    wget -q ${BDP_KYUUBI_SPARK_MIRROR}/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
+    wget -q http://10.2.19.48/bdp/kyuubi/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
     tar -xzf spark-${SPARK_VERSION}-bin-hadoop3.tgz -C /opt && \
     ln -s /opt/spark-${SPARK_VERSION}-bin-hadoop3 ${SPARK_HOME} && \
     rm spark-${SPARK_VERSION}-bin-hadoop3.tgz
