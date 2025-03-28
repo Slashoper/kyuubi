@@ -62,20 +62,20 @@ ${BUILD_CMD} \
 #  --tag nekyuubi/kyuubi-playground-metastore:${KYUUBI_VERSION} \
 #  "${SELF_DIR}/image" $@
 
-${BUILD_CMD} \
-  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
-  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
-  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
-  --build-arg AWS_JAVA_SDK_VERSION=${AWS_JAVA_SDK_VERSION} \
-  --build-arg SPARK_HADOOP_VERSION=${SPARK_HADOOP_VERSION} \
-  --build-arg ICEBERG_VERSION=${ICEBERG_VERSION} \
-  --build-arg POSTGRES_JDBC_VERSION=${POSTGRES_JDBC_VERSION} \
-  --build-arg SCALA_BINARY_VERSION=${SCALA_BINARY_VERSION} \
-  --build-arg SPARK_VERSION=${SPARK_VERSION} \
-  --build-arg SPARK_BINARY_VERSION=${SPARK_BINARY_VERSION} \
-  --file "${SELF_DIR}/image/kyuubi-playground-spark.Dockerfile" \
-  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-spark:${KYUUBI_VERSION} \
-  "${SELF_DIR}/image" $@
+#${BUILD_CMD} \
+#  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
+#  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
+#  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
+#  --build-arg AWS_JAVA_SDK_VERSION=${AWS_JAVA_SDK_VERSION} \
+#  --build-arg SPARK_HADOOP_VERSION=${SPARK_HADOOP_VERSION} \
+#  --build-arg ICEBERG_VERSION=${ICEBERG_VERSION} \
+#  --build-arg POSTGRES_JDBC_VERSION=${POSTGRES_JDBC_VERSION} \
+#  --build-arg SCALA_BINARY_VERSION=${SCALA_BINARY_VERSION} \
+#  --build-arg SPARK_VERSION=${SPARK_VERSION} \
+#  --build-arg SPARK_BINARY_VERSION=${SPARK_BINARY_VERSION} \
+#  --file "${SELF_DIR}/image/kyuubi-playground-spark.Dockerfile" \
+#  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-spark:${KYUUBI_VERSION} \
+#  "${SELF_DIR}/image" $@
 
 ${BUILD_CMD} \
   --build-arg APACHE_MIRROR=${APACHE_MIRROR} \

@@ -12,18 +12,18 @@
 
 ARG KYUUBI_VERSION
 
-FROM registry.dfmc.com.cn/datahub/kyuubi-playground-spark:${KYUUBI_VERSION}
+FROM registry.dfmc.com.cn/datahub/kyuubi-playground-base:${KYUUBI_VERSION}
 
 ARG AWS_JAVA_SDK_VERSION
 ARG KYUUBI_VERSION
 ARG KYUUBI_HADOOP_VERSION
 
 ARG APACHE_MIRROR
-ARG BDP_KYUUBI_MIRROR
 ARG MAVEN_MIRROR
 
 ENV KYUUBI_HOME=/opt/kyuubi
 ENV KYUUBI_CONF_DIR=/etc/kyuubi/conf
+ENV SPARK_HOME=/opt/spark
 
 RUN set -x && \
     wget -q http://10.2.19.48/bdp/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
@@ -36,6 +36,7 @@ RUN set -x && \
 #    wget -q ${MAVEN_MIRROR}/org/apache/hadoop/${HADOOP_AWS_JAR_NAME}/${KYUUBI_HADOOP_VERSION}/${HADOOP_AWS_JAR_NAME}-${KYUUBI_HADOOP_VERSION}.jar -P ${KYUUBI_HOME}/jars && \
 #    AWS_JAVA_SDK_BUNDLE_JAR_NAME=aws-java-sdk-bundle && \
 #    wget -q ${MAVEN_MIRROR}/com/amazonaws/${AWS_JAVA_SDK_BUNDLE_JAR_NAME}/${AWS_JAVA_SDK_VERSION}/${AWS_JAVA_SDK_BUNDLE_JAR_NAME}-${AWS_JAVA_SDK_VERSION}.jar -P ${KYUUBI_HOME}/jars && \
-    useradd anonymous
+    useradd anonymous && \
+    ln -s /opt/apache-kyuubi-${KYUUBI_VERSION}-bin/externals/spark-3.5.4-bin-hadoop3 ${SPARK_HOME}
 
 ENTRYPOINT ["/opt/kyuubi/bin/kyuubi", "run"]
