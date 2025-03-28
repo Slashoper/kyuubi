@@ -12,20 +12,21 @@
 
 ARG KYUUBI_VERSION
 
-FROM nekyuubi/kyuubi-playground-spark:${KYUUBI_VERSION}
+FROM registry.dfmc.com.cn/datahub/kyuubi-playground-spark:${KYUUBI_VERSION}
 
 ARG AWS_JAVA_SDK_VERSION
 ARG KYUUBI_VERSION
 ARG KYUUBI_HADOOP_VERSION
 
 ARG APACHE_MIRROR
+ARG BDP_KYUUBI_MIRROR
 ARG MAVEN_MIRROR
 
 ENV KYUUBI_HOME=/opt/kyuubi
 ENV KYUUBI_CONF_DIR=/etc/kyuubi/conf
 
 RUN set -x && \
-    wget -q ${APACHE_MIRROR}/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
+    wget -q ${BDP_KYUUBI_MIRROR}/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
     tar -xzf apache-kyuubi-${KYUUBI_VERSION}-bin.tgz -C /opt && \
     ln -s /opt/apache-kyuubi-${KYUUBI_VERSION}-bin ${KYUUBI_HOME} && \
     rm apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \

@@ -20,7 +20,10 @@
 set -e
 
 APACHE_MIRROR=${APACHE_MIRROR:-https://dlcdn.apache.org}
+BDP_KYUUBI_MIRROR=${BDP_KYUUBI_MIRROR:-http://10.2.19.48/bdp}
+BDP_KYUUBI_SPARK_MIRROR=${BDP_KYUUBI_SPARK_MIRROR:-http://10.2.19.48/bdp/kyuubi}
 MAVEN_MIRROR=${MAVEN_MIRROR:-https://maven-central-asia.storage-download.googleapis.com/maven2}
+#MAVEN_MIRROR=${MAVEN_MIRROR:-https://maven-central-asia.storage-download.googleapis.com/maven2}
 BUILD_CMD="docker build"
 
 if [ $BUILDX ]; then
@@ -37,27 +40,27 @@ ${BUILD_CMD} \
   --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
   --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
   --file "${SELF_DIR}/image/kyuubi-playground-base.Dockerfile" \
-  --tag nekyuubi/kyuubi-playground-base:${KYUUBI_VERSION} \
+  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-base:${KYUUBI_VERSION} \
   "${SELF_DIR}/image" $@
 
-${BUILD_CMD} \
-  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
-  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
-  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
-  --build-arg AWS_JAVA_SDK_VERSION=${AWS_JAVA_SDK_VERSION} \
-  --build-arg HADOOP_VERSION=${HADOOP_VERSION} \
-  --file "${SELF_DIR}/image/kyuubi-playground-hadoop.Dockerfile" \
-  --tag nekyuubi/kyuubi-playground-hadoop:${KYUUBI_VERSION} \
-  "${SELF_DIR}/image" $@
-
-${BUILD_CMD} \
-  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
-  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
-  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
-  --build-arg HIVE_VERSION=${HIVE_VERSION} \
-  --file "${SELF_DIR}/image/kyuubi-playground-metastore.Dockerfile" \
-  --tag nekyuubi/kyuubi-playground-metastore:${KYUUBI_VERSION} \
-  "${SELF_DIR}/image" $@
+#${BUILD_CMD} \
+#  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
+#  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
+#  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
+#  --build-arg AWS_JAVA_SDK_VERSION=${AWS_JAVA_SDK_VERSION} \
+#  --build-arg HADOOP_VERSION=${HADOOP_VERSION} \
+#  --file "${SELF_DIR}/image/kyuubi-playground-hadoop.Dockerfile" \
+#  --tag nekyuubi/kyuubi-playground-hadoop:${KYUUBI_VERSION} \
+#  "${SELF_DIR}/image" $@
+#
+#${BUILD_CMD} \
+#  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
+#  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
+#  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
+#  --build-arg HIVE_VERSION=${HIVE_VERSION} \
+#  --file "${SELF_DIR}/image/kyuubi-playground-metastore.Dockerfile" \
+#  --tag nekyuubi/kyuubi-playground-metastore:${KYUUBI_VERSION} \
+#  "${SELF_DIR}/image" $@
 
 ${BUILD_CMD} \
   --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
@@ -71,7 +74,7 @@ ${BUILD_CMD} \
   --build-arg SPARK_VERSION=${SPARK_VERSION} \
   --build-arg SPARK_BINARY_VERSION=${SPARK_BINARY_VERSION} \
   --file "${SELF_DIR}/image/kyuubi-playground-spark.Dockerfile" \
-  --tag nekyuubi/kyuubi-playground-spark:${KYUUBI_VERSION} \
+  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-spark:${KYUUBI_VERSION} \
   "${SELF_DIR}/image" $@
 
 ${BUILD_CMD} \
@@ -81,5 +84,5 @@ ${BUILD_CMD} \
   --build-arg AWS_JAVA_SDK_VERSION=${AWS_JAVA_SDK_VERSION} \
   --build-arg KYUUBI_HADOOP_VERSION=${KYUUBI_HADOOP_VERSION} \
   --file "${SELF_DIR}/image/kyuubi-playground-kyuubi.Dockerfile" \
-  --tag nekyuubi/kyuubi-playground-kyuubi:${KYUUBI_VERSION} \
+  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-kyuubi:${KYUUBI_VERSION} \
   "${SELF_DIR}/image" $@
