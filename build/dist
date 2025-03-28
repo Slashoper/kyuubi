@@ -408,7 +408,8 @@ cp -r "$KYUUBI_HOME/docker" "$DISTDIR"
 cp -r "$KYUUBI_HOME/charts" "$DISTDIR"
 
 if [[ "$MAKE_TGZ" == "true" ]]; then
-  TARDIR_NAME="apache-kyuubi-$VERSION-bin$SUFFIX"
+#  TARDIR_NAME="apache-kyuubi-$VERSION-bin$SUFFIX"
+  TARDIR_NAME="apache-kyuubi-$VERSION-bin"
   TARDIR="$KYUUBI_HOME/$TARDIR_NAME"
   rm -rf "$TARDIR"
   cp -R "$DISTDIR" "$TARDIR"
