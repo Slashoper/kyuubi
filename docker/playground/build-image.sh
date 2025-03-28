@@ -85,4 +85,4 @@ ${BUILD_CMD} \
   --build-arg KYUUBI_HADOOP_VERSION=${KYUUBI_HADOOP_VERSION} \
   --file "${SELF_DIR}/image/kyuubi-playground-kyuubi.Dockerfile" \
   --tag registry.dfmc.com.cn/datahub/kyuubi-playground-kyuubi:${KYUUBI_VERSION} \
-  "${SELF_DIR}/image" $@
+  "${SELF_DIR}/image" --no-cache $@
