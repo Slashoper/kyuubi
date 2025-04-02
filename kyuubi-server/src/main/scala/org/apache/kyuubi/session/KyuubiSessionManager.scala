@@ -91,7 +91,7 @@ class KyuubiSessionManager private (name: String) extends SessionManager(name) {
       password: String,
       ipAddress: String,
       conf: Map[String, String]): Session = {
-    val userConf = this.getConf.getUserDefaults(user)
+    val userConf = this.getConf.getUserDefaults(user, groupProvider)
     new KyuubiSessionImpl(
       protocol,
       user,
@@ -156,7 +156,7 @@ class KyuubiSessionManager private (name: String) extends SessionManager(name) {
       fromRecovery: Boolean): KyuubiBatchSession = {
     // scalastyle:on
     val username = Option(user).filter(_.nonEmpty).getOrElse("anonymous")
-    val sessionConf = this.getConf.getUserDefaults(user)
+    val sessionConf = this.getConf.getUserDefaults(user, groupProvider)
     new KyuubiBatchSession(
       username,
       password,

@@ -22,16 +22,15 @@ import java.time.Duration
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 import java.util.regex.Pattern
-
 import scala.collection.JavaConverters._
 import scala.collection.immutable.TreeMap
 import scala.util.matching.Regex
-
 import org.apache.kyuubi.{Logging, Utils}
 import org.apache.kyuubi.config.KyuubiConf._
 import org.apache.kyuubi.engine.{EngineType, ShareLevel}
 import org.apache.kyuubi.engine.deploy.DeployMode
 import org.apache.kyuubi.operation.{NoneMode, PlainStyle}
+import org.apache.kyuubi.plugin.GroupProvider
 import org.apache.kyuubi.service.authentication.{AuthTypes, SaslQOP}
 
 case class KyuubiConf(loadSysDefault: Boolean = true) extends Logging {
@@ -193,15 +192,18 @@ case class KyuubiConf(loadSysDefault: Boolean = true) extends Logging {
     cloned
   }
 
-  def getUserDefaults(user: String): KyuubiConf = {
+  def getUserDefaults(user: String, groupProvider: GroupProvider): KyuubiConf = {
     val cloned = KyuubiConf(false)
 
     for (e <- settings.entrySet().asScala if !e.getKey.startsWith(USER_DEFAULTS_CONF_QUOTE)) {
       cloned.set(e.getKey, e.getValue)
     }
 
+    /** 非主用户资源配置读取不到，通过查询组的资源配置 */
+    val configUser = groupProvider.primaryGroup(user, this.getAll.asJava)
+
     for ((k, v) <-
-        getAllWithPrefix(s"$USER_DEFAULTS_CONF_QUOTE${user}$USER_DEFAULTS_CONF_QUOTE", "")) {
+        getAllWithPrefix(s"$USER_DEFAULTS_CONF_QUOTE${configUser}$USER_DEFAULTS_CONF_QUOTE", "")) {
       cloned.set(k, v)
     }
     serverOnlyConfEntries.foreach(cloned.unset)

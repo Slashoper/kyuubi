@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="26.1.1">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="26.1.3">
   <diagram name="第 1 页" id="Cm_feaSEWDEX9tduUfAY">
     <mxGraphModel dx="2860" dy="1715" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -55,7 +55,7 @@
         <mxCell id="pz1pUzjrbZIfEoaEPdII-53" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiServiceDiscovery&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;zookeeper初始化&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="367" y="-2" width="187" height="49" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-27" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pz1pUzjrbZIfEoaEPdII-18" target="8VjmFdDd3WvxLmGS-bPU-8">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-27" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="pz1pUzjrbZIfEoaEPdII-18" target="8VjmFdDd3WvxLmGS-bPU-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="pz1pUzjrbZIfEoaEPdII-18" value="KyuubiSessionManager" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
@@ -99,7 +99,7 @@
         <mxCell id="pz1pUzjrbZIfEoaEPdII-16" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;engineStartupProcessSemaphore&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;控制同一时刻可以启动多少engine&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
           <mxGeometry x="241.52777777777774" y="6.22501108780792" width="260.02777777777777" height="41.19178765532327" as="geometry" />
         </mxCell>
-        <mxCell id="pz1pUzjrbZIfEoaEPdII-17" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiOperationManager&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;初始化日志插件&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
+        <mxCell id="pz1pUzjrbZIfEoaEPdII-17" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiOperationManager&lt;/span&gt;&lt;div&gt;&lt;div&gt;&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;初始化日志插件&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;PingFangSC-Regular, Microsoft YaHei, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 248, 251);&quot;&gt;执行创建操作engine的命令&lt;br&gt;&lt;div&gt;newLaunchEngineOperation&lt;/div&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="pz1pUzjrbZIfEoaEPdII-61" vertex="1">
           <mxGeometry x="12.333333333333332" y="198.32374143983643" width="194.24999999999997" height="82.67625856016355" as="geometry" />
         </mxCell>
         <mxCell id="pz1pUzjrbZIfEoaEPdII-37" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;entryX=-0.004;entryY=0.157;entryDx=0;entryDy=0;entryPerimeter=0;" parent="pz1pUzjrbZIfEoaEPdII-61" source="pz1pUzjrbZIfEoaEPdII-22" target="pz1pUzjrbZIfEoaEPdII-11" edge="1">
@@ -194,63 +194,78 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-1" value="" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-1" value="" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="-769" y="1007" width="1305" height="446" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-8" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiSessionImpl&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-8" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;KyuubiSessionImpl&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="-310" y="675" width="379" height="274" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-9" value="open" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-9" value="open" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-256" y="714" width="264" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-10" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;runOperation(launchEngineOp)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-10" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;runOperation(launchEngineOp)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-253.5" y="772" width="266" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-11" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;openEngineSession&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-11" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;openEngineSession&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-253.5" y="830" width="266" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-12" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;EngineRef.getOrCreate&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-12" value="&lt;div style=&quot;background-color:#1e1f22;color:#bcbec4&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; white-space: normal; background-color: rgb(248, 248, 251);&quot;&gt;EngineRef.getOrCreate&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-253.5" y="888" width="266" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-16" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;SparkProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-16" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;SparkProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-750" y="1070" width="149" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-17" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;FlinkProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-17" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;FlinkProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-522" y="1070" width="133.5" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-18" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;TrinoProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-18" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;TrinoProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-311" y="1070" width="150" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-19" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;HiveProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-19" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;HiveProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-92" y="1070" width="152" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-20" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;JdbcProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-20" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;JdbcProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="128" y="1070" width="152" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-21" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;ChatProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-21" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;ChatProcessBuilder&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="348" y="1070" width="152" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-22" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8VjmFdDd3WvxLmGS-bPU-8" target="8VjmFdDd3WvxLmGS-bPU-1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-22" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8VjmFdDd3WvxLmGS-bPU-8" target="8VjmFdDd3WvxLmGS-bPU-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-3" y="1127" as="sourcePoint" />
             <mxPoint x="47" y="1077" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-23" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="8VjmFdDd3WvxLmGS-bPU-22">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-23" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" parent="8VjmFdDd3WvxLmGS-bPU-22" vertex="1" connectable="0">
           <mxGeometry x="-0.0303" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-24" value="engineType" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="8VjmFdDd3WvxLmGS-bPU-22">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-24" value="engineType" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" parent="8VjmFdDd3WvxLmGS-bPU-22" vertex="1" connectable="0">
           <mxGeometry x="-0.0033" y="-3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-25" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;main&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-758" y="1254" width="149" height="60" as="geometry" />
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-25" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;main&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-750" y="1254" width="149" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8VjmFdDd3WvxLmGS-bPU-26" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;main&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8VjmFdDd3WvxLmGS-bPU-26" value="&lt;span style=&quot;font-family: PingFangSC-Regular, &amp;quot;Microsoft YaHei&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: start; background-color: rgb(248, 248, 251);&quot;&gt;main&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-311" y="1254" width="149" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9Gpb602DVM5RThhgTFeU-1" value="" style="curved=1;endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.306;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="pz1pUzjrbZIfEoaEPdII-8" target="pz1pUzjrbZIfEoaEPdII-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="621" y="143" as="sourcePoint" />
+            <mxPoint x="671" y="93" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="609" y="145" />
+              <mxPoint x="615" y="197" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Gpb602DVM5RThhgTFeU-2" value="openSession()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="9Gpb602DVM5RThhgTFeU-1">
+          <mxGeometry x="0.2275" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

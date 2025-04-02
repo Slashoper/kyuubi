@@ -57,8 +57,10 @@ class TrinoSessionImpl(
   override val handle: SessionHandle =
     conf.get(KYUUBI_SESSION_HANDLE_KEY).map(SessionHandle.fromUUID).getOrElse(SessionHandle())
 
+
+  /** 使用真实用户，防止映射成组 */
   private val sessionUser: String = sessionConf
-    .getOption(KyuubiReservedKeys.KYUUBI_SESSION_USER_KEY).getOrElse(currentUser)
+    .getOption(KyuubiReservedKeys.KYUUBI_SESSION_REAL_USER_KEY).getOrElse(currentUser)
 
   var trinoContext: TrinoContext = _
   private var clientSession: ClientSession = _
@@ -95,6 +97,8 @@ class TrinoSessionImpl(
     val clientRequestTimeout = sessionConf.get(TrinoConf.CLIENT_REQUEST_TIMEOUT)
 
     val properties = getTrinoSessionConf(sessionConf).asJava
+
+    info(s"==>Launching Trino Session with [$sessionUser]")
 
     ClientSession.builder()
       .server(URI.create(connectionUrl))
