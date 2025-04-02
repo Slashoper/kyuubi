@@ -215,7 +215,7 @@ else
   echo "Making distribution for Kyuubi $VERSION in '$DISTDIR'..."
 fi
 
-MVN_DIST_OPT="-DskipTests -Dmaven.source.skip -Dspotless.check.skip=true"
+MVN_DIST_OPT="-Dmaven.test.skip=true -Dmaven.source.skip -Dspotless.check.skip=true"
 
 if [[ "$ENABLE_WEBUI" == "true" ]]; then
   MVN_DIST_OPT="$MVN_DIST_OPT -Pweb-ui"
