@@ -61,6 +61,13 @@ data:
     ## session configuration
     kyuubi.session.idle.timeout=PT6H
 
+    ## meta configuration
+    kyuubi.metadata.store.jdbc.database.type=MYSQL
+    kyuubi.metadata.store.jdbc.driver=com.mysql.cj.jdbc.Driver
+    kyuubi.metadata.store.jdbc.user=mydba
+    kyuubi.metadata.store.jdbc.password=Mydba123..
+    kyuubi.metadata.store.jdbc.url=jdbc:mysql://10.124.1.226:3306/kyuubi_metastore?createDatabaseIfNotExist=true&useSSL=false
+
 
     ## engine configuration
     # common configuration
