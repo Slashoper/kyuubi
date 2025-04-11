@@ -37,6 +37,12 @@ spec:
     metadata:
       labels:
         {{- include "kyuubi.selectorLabels" . | nindent 8 }}
+        {{- if .Values.yunikorn.enabled }}
+        applicationId: bdp-streampark
+        {{- if .Values.yunikorn.tenantCode }}
+        queue: root.tenants.{{ .Values.yunikorn.tenantCode }}.app
+        {{- end }}
+        {{- end }}
       annotations:
         checksum/conf: {{ include (print $.Template.BasePath "/kyuubi-configmap.yaml") . | sha256sum }}
     spec:

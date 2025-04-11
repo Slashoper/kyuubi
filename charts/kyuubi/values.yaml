@@ -42,9 +42,9 @@ updateStrategy:
     partition: 0
 
 image:
-  repository: apache/kyuubi
+  repository: registry.dfmc.com.cn/datahub/kyuubi-playground-kyuubi
   pullPolicy: IfNotPresent
-  tag: ~
+  tag: 1.10.1-arm
 
 imagePullSecrets: []
 
@@ -162,18 +162,42 @@ kyuubiConf:
   # The value (templated string) is used for kyuubi-defaults.conf file
   # See https://kyuubi.readthedocs.io/en/master/configuration/settings.html#kyuubi-configurations for more details
   kyuubiDefaults: ~
-  #  kyuubiDefaults: |
-  #    kyuubi.authentication=NONE
-  #    kyuubi.frontend.bind.host=10.0.0.1
-  #    kyuubi.engine.type=SPARK_SQL
-  #    kyuubi.engine.share.level=USER
-  #    kyuubi.session.engine.initialize.timeout=PT3M
-  #    kyuubi.ha.addresses=zk1:2181,zk2:2181,zk3:2181
-  #    kyuubi.ha.namespace=kyuubi
 
-  # The value (templated string) is used for log4j2.xml file
+# The value (templated string) is used for log4j2.xml file
   # See example at conf/log4j2.xml.template https://kyuubi.readthedocs.io/en/master/configuration/settings.html#logging for more details
-  log4j2: ~
+  log4j2: |
+    <?xml version="1.0" encoding="UTF-8"?>
+      <Configuration status="WARN" monitorInterval="30">
+      <!-- 定义 Appenders -->
+      <Appenders>
+      <!-- Console 输出 -->
+      <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout>
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+      </PatternLayout>
+      </Console>
+
+      <!-- File 输出 -->
+      <File name="File" fileName="logs/kyuubi.log" append="true">
+      <PatternLayout>
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+      </PatternLayout>
+      </File>
+      </Appenders>
+      
+      <!-- 定义 Loggers -->
+      <Loggers>
+      <!-- 设置全局日志级别 -->
+      <Root level="DEBUG">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="File"/>
+      </Root>
+      <!-- 针对特定包设置日志级别 -->
+      <Logger name="org.apache.kyuubi" level="DEBUG" additivity="false">
+      <AppenderRef ref="Console"/>
+      </Logger>
+      </Loggers>
+      </Configuration>
 
 # $SPARK_CONF_DIR directory
 sparkConfDir: /opt/spark/conf
@@ -190,22 +214,27 @@ sparkConf:
 
   # The value (templated string) is used for spark-defaults.conf file
   # See example at https://github.com/apache/spark/blob/master/conf/spark-defaults.conf.template and Spark documentation for more details
-  sparkDefaults: ~
-  #  sparkDefaults: |
-  #    spark.submit.deployMode=cluster
-  #    spark.kubernetes.container.image=apache/spark:3.5.0
-  #    spark.kubernetes.authenticate.driver.serviceAccountName=spark
-  #    spark.kubernetes.file.upload.path=s3a://kyuubi/spark
-  #    # S3 dependencies
-  #    spark.jars.packages=org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262
-  #    spark.driver.extraJavaOptions=-Divy.cache.dir=/tmp -Divy.home=/tmp
-  #    # S3A configuration
-  #    spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
-  #    spark.hadoop.fs.s3a.endpoint=http://object-storage:80
-  #    spark.hadoop.fs.s3a.access.key=******
-  #    spark.hadoop.fs.s3a.secret.key=********
-  #    spark.hadoop.fs.s3a.path.style.access=true
-  #    spark.hadoop.fs.s3a.fast.upload=true
+#  sparkDefaults: ~
+  sparkDefaults: |
+    spark.submit.deployMode=cluster
+    spark.kubernetes.container.image=registry.dfmc.com.cn/datahub/spark:3.5.2
+    spark.kubernetes.authenticate.driver.serviceAccountName=spark
+    spark.kubernetes.file.upload.path=s3a://dfmdctest-bdp-test/kyuubi/spark
+    # S3 dependencies
+    spark.jars.packages=org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262
+    spark.driver.extraJavaOptions=-Divy.cache.dir=/tmp -Divy.home=/tmp
+    # S3A configuration
+    spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
+    spark.hadoop.fs.s3a.endpoint=http://10.83.4.205:8060
+    spark.hadoop.fs.s3a.access.key=6NTWJGZLSK1Y9F38WC48
+    spark.hadoop.fs.s3a.secret.key=IY7mBaNTI3Y7u6ZO0x02FqYu87IDOdkELzTlAdM5
+    spark.hadoop.fs.s3a.path.style.access=true
+    spark.hadoop.fs.s3a.fast.upload=true
+    #paimon ranger metastore configuration
+    spark.sql.extensions=org.apache.kyuubi.plugin.spark.authz.ranger.RangerSparkExtension,org.apache.paimon.spark.extensions.PaimonSparkSessionExtensions
+    spark.sql.catalog.paimon=org.apache.paimon.spark.SparkCatalog
+    spark.sql.catalog.paimon.warehouse=s3a://dfmdctest-bdp-test/paimon
+    spark.hive.metastore.uris=thrift://hive-me-femkx7.yhsjztcphj1-dev:9083
 
   # The value (templated string) is used for log4j2.properties file
   # See example at https://github.com/apache/spark/blob/master/conf/log4j2.properties.template and Spark documentation for more details
@@ -214,6 +243,65 @@ sparkConf:
   # The value (templated string) is used for metrics.properties file
   # See example at https://github.com/apache/spark/blob/master/conf/metrics.properties.template and Spark documentation for more details
   metrics: ~
+  ranger:
+    audit: |
+      <configuration>
+          <property>
+              <name>xasecure.audit.is.enabled</name>
+              <value>true</value>
+          </property>
+          <property>
+              <name>xasecure.audit.destination.elasticsearch</name>
+              <value>true</value>
+          </property>
+          <property>
+              <name>xasecure.audit.destination.elasticsearch.urls</name>
+              <value>es01.yhsjztcphj1-dev</value>
+          </property>
+          <property>
+              <name>xasecure.audit.destination.elasticsearch.user</name>
+              <value>elastic</value>
+          </property>
+          <property>
+              <name>xasecure.audit.destination.elasticsearch.password</name>
+              <value>elasticsearch</value>
+          </property>
+        <property>
+              <name>xasecure.audit.destination.elasticsearch.index</name>
+              <value>ranger_audits</value>
+          </property>
+        <property>
+              <name>xasecure.audit.destination.elasticsearch.port</name>
+              <value>9200</value>
+          </property>
+        <property>
+              <name>xasecure.audit.destination.elasticsearch.protocol</name>
+              <value>http</value>
+         </property>
+      </configuration>
+    security: |
+      <configuration>
+        <property>
+          <name>ranger.plugin.spark.policy.rest.url</name>
+          <value>http://ranger-admin.yhsjztcphj1-dev:6080</value>
+        </property>
+        <property>
+          <name>ranger.plugin.spark.service.name</name>
+          <value>sparksql</value>
+        </property>
+        <property>
+          <name>ranger.plugin.spark.policy.cache.dir</name>
+          <value>/opt/spark/policycache</value>
+        </property>
+        <property>
+          <name>ranger.plugin.spark.policy.pollIntervalMs</name>
+          <value>5000</value>
+        </property>
+        <property>
+          <name>ranger.plugin.spark.policy.source.impl</name>
+          <value>org.apache.ranger.admin.client.RangerAdminRESTClient</value>
+        </property>
+      </configuration>
 
 # Command to launch Kyuubi server (templated)
 command: ~
@@ -307,3 +395,8 @@ metrics:
     enabled: false
     # Content of Prometheus rule file
     groups: []
+
+
+yunikorn:
+  enabled: true
+  tenantCode: dfg

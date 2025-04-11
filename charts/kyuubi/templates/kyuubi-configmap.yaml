@@ -27,7 +27,8 @@ data:
     {{- tpl . $ | nindent 4 }}
   {{- end }}
   kyuubi-defaults.conf: |
-    ## Helm chart provided Kyuubi configurations
+    ## kyuubi server configuration
+    # common configuration
     kyuubi.kubernetes.namespace={{ .Release.Namespace }}
     kyuubi.frontend.connection.url.use.hostname=false
     kyuubi.frontend.thrift.binary.bind.port={{ .Values.server.thriftBinary.port }}
@@ -36,10 +37,123 @@ data:
     kyuubi.frontend.mysql.bind.port={{ .Values.server.mysql.port }}
     kyuubi.frontend.protocols={{ include "kyuubi.frontend.protocols" . }}
 
-    # Kyuubi Metrics
+    #HA configuration
+    kyuubi.ha.zookeeper.quorum=10.124.1.115:2181
+    kyuubi.ha.zookeeper.namespace=/kyuubi
+    #kyuubi.ha.zookeeper.session.timeout=60000
+
+    #LDAP configuration
+    kyuubi.session.group.provider=ldap
+    kyuubi.session.group.ldap.based.dn=dc=dfg,dc=com
+    kyuubi.session.group.ldap.bind.dn=cn=admin,dc=dfg,dc=com
+    kyuubi.session.group.ldap.bind.password=ol_D5-mO7KWz.yg
+    kyuubi.session.group.ldap.group.member.attr=memberUid
+    kyuubi.session.group.ldap.group.name.attr=cn
+    kyuubi.session.group.ldap.group.search.filter=(objectClass=posixGroup)
+    kyuubi.session.group.ldap.url=ldap://bdp-openldap:389
+    kyuubi.session.group.ldap.user.search.filter=(&(objectClass=person)(cn={0}))
+
+    # metrics configuration
     kyuubi.metrics.enabled={{ .Values.metrics.enabled }}
     kyuubi.metrics.reporters={{ .Values.metrics.reporters }}
     kyuubi.metrics.prometheus.port={{ .Values.metrics.prometheusPort }}
+
+    ## session configuration
+    kyuubi.session.idle.timeout=PT6H
+
+
+    ## engine configuration
+    # common configuration
+    kyuubi.engine.share.level=GROUP
+    kyuubi.session.engine.check.interval=PT1M
+    kyuubi.session.engine.idle.timeout=PT30M
+    kyuubi.engine.spark.group.dregetl.idle.timeout = PT5M
+    kyuubi.engine.spark.group.dlargeetl.idle.timeout = PT5M
+    kyuubi.engine.spark.group.dadhoc.idle.timeout = PT480M
+    kyuubi.engine.spark.group.nregetl.idle.timeout = PT5M
+    kyuubi.engine.spark.group.nlageetl.idle.timeout = PT5M
+    kyuubi.kubernetes.terminatedApplicationRetainPeriod=PT1M
+
+    #trino engine
+    kyuubi.session.engine.trino.connection.url=https://trino-ranger-yhsjztcphj1-dev.dfmc.com.cn
+    kyuubi.session.engine.trino.connection.catalog=s3dev
+    kyuubi.engine.trino.connection.insecure.enabled=true
+    kyuubi.engine.trino.connection.user=admin
+    kyuubi.engine.trino.connection.password=xlu9-NaB0.Go10
+
+    #spark engine
+    kyuubi.kubernetes.spark.cleanupTerminatedDriverPod.kind=COMPLETED
+    # 白天常规ETL engine
+    ___dregetl___.spark.app.name=D-Regular-ETL
+    ___dregetl___.spark.executor.instances=2
+    ___dregetl___.spark.driver.cores=1
+    ___dregetl___.spark.executor.cores=2
+    ___dregetl___.spark.kubernetes.driver.limit.cores=2
+    ___dregetl___.spark.kubernetes.executor.limit.cores=4
+    ___dregetl___.spark.driver.memory=1g
+    ___dregetl___.spark.executor.memory=4g
+
+    # 白天大资源消耗 ETL engine
+    ___dbigetl___.spark.app.name=D-Big-ETL
+    ___dbigetl___.spark.executor.instances=1
+    ___dbigetl___.spark.driver.cores=1
+    ___dbigetl___.spark.executor.cores=1
+    ___dbigetl___.spark.kubernetes.driver.limit.cores=1
+    ___dbigetl___.spark.kubernetes.executor.limit.cores=1
+    ___dbigetl___.spark.driver.memory=1g
+    ___dbigetl___.spark.executor.memory=1g
+
+    # 白天AD-HOC query engine
+    ___ad-hoc___.spark.app.name=AD-HOC
+    ___ad-hoc___.spark.executor.instances=1
+    ___ad-hoc___.spark.driver.cores=1
+    ___ad-hoc___.spark.executor.cores=1
+    ___ad-hoc___.spark.kubernetes.driver.limit.cores=1
+    ___ad-hoc___.spark.kubernetes.executor.limit.cores=1
+    ___ad-hoc___.spark.driver.memory=1g
+    ___ad-hoc___.spark.executor.memory=1g
+
+    # 晚上常规ETL engine
+    ___nregetl___.spark.app.name=N-Regular-ETL
+    ___nregetl___.spark.executor.instances=1
+    ___nregetl___.spark.driver.cores=1
+    ___nregetl___.spark.executor.cores=2
+    ___nregetl___.spark.kubernetes.driver.limit.cores=1
+    ___nregetl___.spark.kubernetes.executor.limit.cores=2
+    ___nregetl___.spark.driver.memory=1g
+    ___nregetl___.spark.executor.memory=1g
+    ___nregetl___.spark.eventLog.enabled=true
+    ___nregetl___.spark.eventLog.compress=true
+    ___nregetl___.spark.eventLog.dir=/opt/spark/eventlog
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=spark-history-server
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.storageClass=csi-nfs-lke-prod
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=spark-history-server
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.storageClass=csi-nfs-lke-prod
+
+    # 晚上大资源消耗ETL engine
+    ___nbigetl___.spark.app.name=N-Big-ETL
+    ___nbigetl___.spark.executor.instances=1
+    ___nbigetl___.spark.driver.cores=1
+    ___nbigetl___.spark.executor.cores=2
+    ___nbigetl___.spark.kubernetes.driver.limit.cores=1
+    ___nbigetl___.spark.kubernetes.executor.limit.cores=2
+    ___nbigetl___.spark.driver.memory=1g
+    ___nbigetl___.spark.executor.memory=1g
+    ___nbigetl___.spark.eventLog.enabled=true
+    ___nbigetl___.spark.eventLog.compress=true
+    ___nbigetl___.spark.eventLog.dir=/opt/spark/eventlog
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=spark-history-server
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.storageClass=csi-nfs-lke-prod
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=spark-history-server
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.storageClass=csi-nfs-lke-prod
 
     ## User provided Kyuubi configurations
     {{- with .Values.kyuubiConf.kyuubiDefaults }}
