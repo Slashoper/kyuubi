@@ -35,13 +35,13 @@ SELF_DIR="$(cd "$(dirname "$0")"; pwd)"
 
 source "${SELF_DIR}/.env"
 
-${BUILD_CMD} \
-  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
-  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
-  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
-  --file "${SELF_DIR}/image/kyuubi-playground-base.Dockerfile" \
-  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-base:${KYUUBI_VERSION} \
-  "${SELF_DIR}/image" $@
+#${BUILD_CMD} \
+#  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
+#  --build-arg MAVEN_MIRROR=${MAVEN_MIRROR} \
+#  --build-arg KYUUBI_VERSION=${KYUUBI_VERSION} \
+#  --file "${SELF_DIR}/image/kyuubi-playground-base.Dockerfile" \
+#  --tag registry.dfmc.com.cn/datahub/kyuubi-base:${KYUUBI_VERSION} \
+#  "${SELF_DIR}/image" $@
 
 #${BUILD_CMD} \
 #  --build-arg APACHE_MIRROR=${APACHE_MIRROR} \
@@ -84,5 +84,5 @@ ${BUILD_CMD} \
   --build-arg AWS_JAVA_SDK_VERSION=${AWS_JAVA_SDK_VERSION} \
   --build-arg KYUUBI_HADOOP_VERSION=${KYUUBI_HADOOP_VERSION} \
   --file "${SELF_DIR}/image/kyuubi-playground-kyuubi.Dockerfile" \
-  --tag registry.dfmc.com.cn/datahub/kyuubi-playground-kyuubi:${KYUUBI_VERSION} \
+  --tag registry.dfmc.com.cn/datahub/kyuubi:${KYUUBI_VERSION} \
   "${SELF_DIR}/image" --no-cache $@

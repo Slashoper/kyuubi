@@ -10,9 +10,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG KYUUBI_VERSION
+FROM eclipse-temurin:8-focal
 
-FROM registry.dfmc.com.cn/datahub/kyuubi-playground-base:${KYUUBI_VERSION}
+RUN set -x && \
+    ln -snf /usr/bin/bash /usr/bin/sh && \
+    apt-get update -q && \
+    apt-get install -yq retry busybox && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir /opt/busybox && \
+    busybox --install /opt/busybox
 
 ARG AWS_JAVA_SDK_VERSION
 ARG KYUUBI_VERSION
@@ -38,5 +44,8 @@ RUN set -x && \
 #    wget -q ${MAVEN_MIRROR}/com/amazonaws/${AWS_JAVA_SDK_BUNDLE_JAR_NAME}/${AWS_JAVA_SDK_VERSION}/${AWS_JAVA_SDK_BUNDLE_JAR_NAME}-${AWS_JAVA_SDK_VERSION}.jar -P ${KYUUBI_HOME}/jars && \
     useradd anonymous && \
     ln -s /opt/apache-kyuubi-${KYUUBI_VERSION}-bin/externals/spark-3.5.4-bin-hadoop3 ${SPARK_HOME}
+
+
+ENV PATH=${PATH}:/opt/busybox
 
 ENTRYPOINT ["/opt/kyuubi/bin/kyuubi", "run"]
