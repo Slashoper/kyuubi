@@ -42,7 +42,7 @@ updateStrategy:
     partition: 0
 
 image:
-  repository: registry.dfmc.com.cn/datahub/kyuubi-playground-kyuubi
+  repository: registry.dfmc.com.cn/datahub/kyuubi
   pullPolicy: IfNotPresent
   tag: 1.10.1-arm
 
@@ -127,6 +127,7 @@ server:
       #  sessionAffinityConfig:
       #    clientIP:
       #      timeoutSeconds: 10800
+  # metastore config
 
   # MySQL compatible text protocol (experimental)
   mysql:
@@ -400,3 +401,19 @@ metrics:
 yunikorn:
   enabled: true
   tenantCode: dfg
+
+metadata:
+  store:
+    jdbc:
+      database:
+        type: mysql
+      driver: com.mysql.cj.jdbc.Driver
+      user: root
+      password: DFSJZT@123
+      url: jdbc:mysql://121.36.199.109:3306/kyuubi_metastore?createDatabaseIfNotExist=true&useSSL=false
+
+ha:
+  zookeeper:
+    quorum: 10.124.61.195:2181
+    namespace: /kyuubi
+    timeout: 60000

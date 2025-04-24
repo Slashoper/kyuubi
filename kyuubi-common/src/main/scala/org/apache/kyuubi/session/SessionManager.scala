@@ -337,33 +337,33 @@ abstract class SessionManager(name: String) extends CompositeService(name) {
       TimeUnit.MILLISECONDS)
   }
 
-  private[kyuubi] def startSparkTerminatingChecker(stop: () => Unit): Unit = if (!isServer) {
-    // initialize `_latestLogoutTime` at start
-    val shareLevle = (""= "Group") ? "group" : "";
-    val groupName = "dadhoc"
-    val ttl = "kyuubi.session.engine.SPARK.$GROUP.$GroupName.idle.timeout"
-    _latestLogoutTime = System.currentTimeMillis()
-    val interval = conf.get(ENGINE_CHECK_INTERVAL)
-    //todo 根据不同的engine配置的空闲时间进行engine的清理
-    val idleTimeout = conf.get(ENGINE_IDLE_TIMEOUT)
-    if (idleTimeout > 0) {
-      val checkTask = new Runnable {
-        override def run(): Unit = {
-          if (!shutdown && System.currentTimeMillis() - latestLogoutTime > idleTimeout &&
-            getActiveUserSessionCount <= 0) {
-            info(s"Idled for more than $idleTimeout ms, terminating")
-            stop()
-          }
-        }
-      }
-      scheduleTolerableRunnableWithFixedDelay(
-        timeoutChecker,
-        checkTask,
-        interval,
-        interval,
-        TimeUnit.MILLISECONDS)
-    }
-  }
+//  private[kyuubi] def startSparkTerminatingChecker(stop: () => Unit): Unit = if (!isServer) {
+//    // initialize `_latestLogoutTime` at start
+//    val shareLevle = (""= "Group") ? "group" : "";
+//    val groupName = "dadhoc"
+//    val ttl = "kyuubi.session.engine.SPARK.$GROUP.$GroupName.idle.timeout"
+//    _latestLogoutTime = System.currentTimeMillis()
+//    val interval = conf.get(ENGINE_CHECK_INTERVAL)
+//    //todo 根据不同的engine配置的空闲时间进行engine的清理
+//    val idleTimeout = conf.get(ENGINE_IDLE_TIMEOUT)
+//    if (idleTimeout > 0) {
+//      val checkTask = new Runnable {
+//        override def run(): Unit = {
+//          if (!shutdown && System.currentTimeMillis() - latestLogoutTime > idleTimeout &&
+//            getActiveUserSessionCount <= 0) {
+//            info(s"Idled for more than $idleTimeout ms, terminating")
+//            stop()
+//          }
+//        }
+//      }
+//      scheduleTolerableRunnableWithFixedDelay(
+//        timeoutChecker,
+//        checkTask,
+//        interval,
+//        interval,
+//        TimeUnit.MILLISECONDS)
+//    }
+//  }
 
   private[kyuubi] def startTerminatingChecker(stop: () => Unit): Unit = if (!isServer) {
     // initialize `_latestLogoutTime` at start

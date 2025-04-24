@@ -38,9 +38,9 @@ data:
     kyuubi.frontend.protocols={{ include "kyuubi.frontend.protocols" . }}
 
     #HA configuration
-    kyuubi.ha.zookeeper.quorum=10.124.1.115:2181
-    kyuubi.ha.zookeeper.namespace=/kyuubi
-    #kyuubi.ha.zookeeper.session.timeout=60000
+    kyuubi.ha.zookeeper.quorum={{ .Values.ha.zookeeper.quorum }}
+    kyuubi.ha.zookeeper.namespace={{ .Values.ha.zookeeper.namespace }}
+    #kyuubi.ha.zookeeper.session.timeout={{ .Values.ha.zookeeper.timeout }}
 
     #LDAP configuration
     kyuubi.session.group.provider=ldap
@@ -62,11 +62,11 @@ data:
     kyuubi.session.idle.timeout=PT6H
 
     ## meta configuration
-    kyuubi.metadata.store.jdbc.database.type=MYSQL
-    kyuubi.metadata.store.jdbc.driver=com.mysql.cj.jdbc.Driver
-    kyuubi.metadata.store.jdbc.user=mydba
-    kyuubi.metadata.store.jdbc.password=Mydba123..
-    kyuubi.metadata.store.jdbc.url=jdbc:mysql://10.124.1.226:3306/kyuubi_metastore?createDatabaseIfNotExist=true&useSSL=false
+    kyuubi.metadata.store.jdbc.database.type={{ .Values.metadata.store.jdbc.database.type }}
+    kyuubi.metadata.store.jdbc.driver={{ .Values.metadata.store.jdbc.driver }}
+    kyuubi.metadata.store.jdbc.user={{ .Values.metadata.store.jdbc.user }}
+    kyuubi.metadata.store.jdbc.password={{ .Values.metadata.store.jdbc.password }}
+    kyuubi.metadata.store.jdbc.url={{ .Values.metadata.store.jdbc.url }}
 
 
     ## engine configuration
