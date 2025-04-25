@@ -49,7 +49,8 @@
                         <includes>
                             <include>org.apache.kyuubi:*</include>
                             <include>org.apache.ranger:*</include>
-                            <include>org.codehaus.jackson:*</include>
+                            <include>com.fasterxml.jackson.*:*</include>
+                            <!-- <include>org.codehaus.jackson:*</include> -->
                             <include>com.sun.jersey:*</include>
                             <include>com.kstruct:gethostname4j</include>
                             <include>javax.ws.rs:jsr311-api</include>
@@ -82,8 +83,11 @@
                     </filters>
                     <relocations>
                         <relocation>
-                            <pattern>org.codehaus.jackson</pattern>
-                            <shadedPattern>${kyuubi.shade.packageName}.org.codehaus.jackson</shadedPattern>
+                            <pattern>com.fasterxml.jackson</pattern>
+                            <shadedPattern>${kyuubi.shade.packageName}.com.fasterxml.jackson</shadedPattern>
+                            <includes>
+                                <include>com.fasterxml.jackson.**</include>
+                              </includes>
                         </relocation>
                         <relocation>
                             <pattern>com.sun.jersey</pattern>
