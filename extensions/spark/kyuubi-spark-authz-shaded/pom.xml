@@ -36,6 +36,11 @@
             <artifactId>kyuubi-spark-authz_${scala.binary.version}</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-scala_2.12</artifactId>
+            <version>2.15.2</version>
+        </dependency>
     </dependencies>
 
     <build>
