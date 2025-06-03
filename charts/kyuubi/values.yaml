@@ -53,7 +53,7 @@ serviceAccount:
   # Specifies whether a ServiceAccount should be created
   create: true
   # Specifies ServiceAccount name to be used (created if `create: true`)
-  name: ~
+  name: bdp-dolphin
   # Annotations to add to the ServiceAccount
   annotations: {}
 
