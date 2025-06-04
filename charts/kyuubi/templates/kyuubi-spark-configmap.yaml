@@ -30,19 +30,19 @@ data:
   spark-defaults.conf: |
     {{- tpl . $ | nindent 4 }}
   {{- end }}
+  {{- with .Values.sparkConf.rangerSparkAudit }}
+  ranger-spark-audit.xml: |
+    {{- tpl . $ | nindent 4 }}
+  {{- end }}
+  {{- with .Values.sparkConf.rangerSparkSecurity }}
+  ranger-spark-security.xml: |
+    {{- tpl . $ | nindent 4 }}
+  {{- end }}
   {{- with .Values.sparkConf.log4j2 }}
   log4j2.properties: |
     {{- tpl . $ | nindent 4 }}
   {{- end }}
   {{- with .Values.sparkConf.metrics }}
   metrics.properties: |
-    {{- tpl . $ | nindent 4 }}
-  {{- end }}
-  {{- with .Values.sparkConf.ranger.audit }}
-  ranger-spark-audit.xml: |
-    {{- tpl . $ | nindent 4 }}
-  {{- end }}
-  {{- with .Values.sparkConf.ranger.audit }}
-  ranger-spark-security.xml: |
     {{- tpl . $ | nindent 4 }}
   {{- end }}
