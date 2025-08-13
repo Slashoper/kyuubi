@@ -52,7 +52,7 @@ class KyuubiBatchSession(
     password,
     ipAddress,
     conf,
-    sessionManager) {
+    sessionManager,sessionConf) {
   override val sessionType: SessionType = SessionType.BATCH
 
   override val handle: SessionHandle = {

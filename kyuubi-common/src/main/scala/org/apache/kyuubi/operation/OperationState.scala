@@ -32,6 +32,8 @@ object OperationState extends Enumeration {
 
   val terminalStates: Seq[OperationState] = Seq(FINISHED, TIMEOUT, CANCELED, CLOSED, ERROR)
 
+  val successStates: Seq[OperationState] = Seq(FINISHED, COMPILED)
+
   implicit def toTOperationState(from: OperationState): TOperationState = from match {
     case INITIALIZED => INITIALIZED_STATE
     case PENDING => PENDING_STATE
@@ -62,5 +64,9 @@ object OperationState extends Enumeration {
 
   def isTerminal(state: OperationState): Boolean = {
     terminalStates.contains(state)
+  }
+
+  def isSuccess(state: OperationState): Boolean = {
+    successStates.contains(state)
   }
 }

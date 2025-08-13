@@ -51,7 +51,7 @@ class KyuubiSessionImpl(
     sessionConf: KyuubiConf,
     doAsEnabled: Boolean,
     parser: KyuubiParser)
-  extends KyuubiSession(protocol, user, password, ipAddress, conf, sessionManager) {
+  extends KyuubiSession(protocol, user, password, ipAddress, conf, sessionManager, sessionConf) {
 
   override val sessionType: SessionType = SessionType.INTERACTIVE
 

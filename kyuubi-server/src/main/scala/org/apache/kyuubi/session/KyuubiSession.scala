@@ -17,7 +17,7 @@
 package org.apache.kyuubi.session
 
 import com.codahale.metrics.MetricRegistry
-
+import org.apache.kyuubi.config.KyuubiConf
 import org.apache.kyuubi.config.KyuubiReservedKeys.{KYUUBI_SESSION_CONNECTION_URL_KEY, KYUUBI_SESSION_REAL_USER_KEY}
 import org.apache.kyuubi.events.{EventBus, KyuubiSessionEvent}
 import org.apache.kyuubi.metrics.MetricsConstants.{CONN_OPEN, CONN_TOTAL}
@@ -31,10 +31,13 @@ abstract class KyuubiSession(
     password: String,
     ipAddress: String,
     conf: Map[String, String],
-    sessionManager: KyuubiSessionManager)
+    sessionManager: KyuubiSessionManager,
+    sessionConf: KyuubiConf)
   extends AbstractSession(protocol, user, password, ipAddress, conf, sessionManager) {
 
   val sessionType: SessionType
+
+  def getSessionConf = sessionConf
 
   val connectionUrl = conf.getOrElse(KYUUBI_SESSION_CONNECTION_URL_KEY, "")
 

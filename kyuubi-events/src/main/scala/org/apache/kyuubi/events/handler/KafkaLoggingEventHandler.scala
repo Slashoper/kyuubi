@@ -34,7 +34,7 @@ class KafkaLoggingEventHandler(
     topic: String,
     producerConf: Iterable[(String, String)],
     kyuubiConf: KyuubiConf,
-    closeTimeoutInMs: Long) extends EventHandler[KyuubiEvent] with Logging {
+    closeTimeoutInMs: Long) extends EvenbtHandler[KyuubiEvent] with Logging {
   private def defaultProducerConf: Properties = {
     val conf = new Properties()
     conf.setProperty("key.serializer", DEFAULT_SERIALIZER_CLASS)

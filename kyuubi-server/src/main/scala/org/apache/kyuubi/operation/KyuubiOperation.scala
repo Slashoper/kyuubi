@@ -18,12 +18,15 @@
 package org.apache.kyuubi.operation
 
 import java.io.IOException
-
 import com.codahale.metrics.MetricRegistry
 import org.apache.commons.lang3.StringUtils
-
+import org.apache.kyuubi.config.KyuubiConf
+import org.apache.kyuubi.config.KyuubiConf.{ENGINE_TRINO_CONNECTION_CATALOG, ENGINE_TYPE}
 import org.apache.kyuubi.{KyuubiSQLException, Utils}
 import org.apache.kyuubi.config.KyuubiReservedKeys.KYUUBI_OPERATION_HANDLE_KEY
+import org.apache.kyuubi.engine.EngineType
+import org.apache.kyuubi.engine.EngineType._
+import org.apache.kyuubi.engine.spark.SparkProcessBuilder
 import org.apache.kyuubi.events.{EventBus, KyuubiOperationEvent}
 import org.apache.kyuubi.metrics.MetricsConstants.{OPERATION_FAIL, OPERATION_OPEN, OPERATION_STATE, OPERATION_TOTAL}
 import org.apache.kyuubi.metrics.MetricsSystem
@@ -217,11 +220,30 @@ abstract class KyuubiOperation(session: Session) extends AbstractOperation(sessi
       ms.markMeter(MetricRegistry.name(OPERATION_STATE, newState.toString.toLowerCase))
     }
     super.setState(newState)
-    if (eventEnabled) EventBus.post(getOperationEvent)
+    // 状态为完成的状态，发送一个事件，增加engineType、catalog、database等信息
+    if (eventEnabled && OperationState.isSuccess(newState)) {
+      val operationEvent: KyuubiOperationEvent = getOperationEvent
+      info("===>数据血缘埋点事件:" + operationEvent.toJson)
+      EventBus.post(operationEvent)
+    }
   }
 
   def getOperationEvent: KyuubiOperationEvent = {
     val kyuubiSession = session.asInstanceOf[KyuubiSession]
+    val sessionConf = kyuubiSession.getSessionConf
+    var defaultCatalog = "SPARK_CATALOG"
+    val defaultDB = ""
+    // add engine type
+    val engineType: EngineType = EngineType.withName(sessionConf.get(ENGINE_TYPE))
+    defaultCatalog =  engineType  match {
+      case SPARK_SQL =>
+        "SPARK_CATALOG"
+      case TRINO =>
+        sessionConf.get(KyuubiConf.ENGINE_TRINO_CONNECTION_CATALOG).getOrElse("")
+      case _ =>
+         "SPARK_CATALOG"
+    }
+
     KyuubiOperationEvent(
       statementId,
       Option(remoteOpHandle()).map(OperationHandle(_).identifier.toString).orNull,
@@ -237,6 +259,9 @@ abstract class KyuubiOperation(session: Session) extends AbstractOperation(sessi
       kyuubiSession.user,
       kyuubiSession.sessionType.toString,
       kyuubiSession.connectionUrl,
-      metrics)
+      metrics,
+      engineType,
+      defaultCatalog,
+      defaultDB)
   }
 }

@@ -18,6 +18,7 @@
 package org.apache.kyuubi.events
 
 import org.apache.kyuubi.Utils
+import org.apache.kyuubi.engine.EngineType.EngineType
 
 /**
  * A [[KyuubiOperationEvent]] used to tracker the lifecycle of an operation at server side.
@@ -58,7 +59,10 @@ case class KyuubiOperationEvent(
     sessionUser: String,
     sessionType: String,
     kyuubiInstance: String,
-    metrics: Map[String, String]) extends KyuubiEvent {
+    metrics: Map[String, String],
+    engineType: EngineType,
+    catalogName: String,
+    databaseName: String) extends KyuubiEvent {
 
   // operation events are partitioned by the date when the corresponding operations are
   // created.
