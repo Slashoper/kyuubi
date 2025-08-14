@@ -21,12 +21,11 @@ import java.io.IOException
 import com.codahale.metrics.MetricRegistry
 import org.apache.commons.lang3.StringUtils
 import org.apache.kyuubi.config.KyuubiConf
-import org.apache.kyuubi.config.KyuubiConf.{ENGINE_TRINO_CONNECTION_CATALOG, ENGINE_TYPE}
+import org.apache.kyuubi.config.KyuubiConf._
 import org.apache.kyuubi.{KyuubiSQLException, Utils}
 import org.apache.kyuubi.config.KyuubiReservedKeys.KYUUBI_OPERATION_HANDLE_KEY
 import org.apache.kyuubi.engine.EngineType
 import org.apache.kyuubi.engine.EngineType._
-import org.apache.kyuubi.engine.spark.SparkProcessBuilder
 import org.apache.kyuubi.events.{EventBus, KyuubiOperationEvent}
 import org.apache.kyuubi.metrics.MetricsConstants.{OPERATION_FAIL, OPERATION_OPEN, OPERATION_STATE, OPERATION_TOTAL}
 import org.apache.kyuubi.metrics.MetricsSystem
@@ -241,7 +240,7 @@ abstract class KyuubiOperation(session: Session) extends AbstractOperation(sessi
       case TRINO =>
         sessionConf.get(KyuubiConf.ENGINE_TRINO_CONNECTION_CATALOG).getOrElse("")
       case _ =>
-         "SPARK_CATALOG"
+        ""
     }
 
     KyuubiOperationEvent(
