@@ -220,10 +220,10 @@ abstract class KyuubiOperation(session: Session) extends AbstractOperation(sessi
     }
     super.setState(newState)
     // 状态为完成的状态，发送一个事件，增加engineType、catalog、database等信息
-    if (eventEnabled && OperationState.isSuccess(newState)) {
-      val operationEvent: KyuubiOperationEvent = getOperationEvent
-      info("===>数据血缘埋点事件:" + operationEvent.toJson)
-      EventBus.post(operationEvent)
+    if (eventEnabled ) {
+        val operationEvent: KyuubiOperationEvent = getOperationEvent
+        debug("operation events :" + operationEvent.toJson)
+        EventBus.post(operationEvent)
     }
   }
 
