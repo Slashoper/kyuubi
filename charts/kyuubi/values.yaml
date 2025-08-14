@@ -22,6 +22,11 @@
 # Kyuubi server numbers
 replicaCount: 2
 
+#这里需要根据trino的实际情况填
+hostAliases:
+  ip: 10.124.61.188
+  hostnames: trinoxc-dev.dfmc.com.cn
+
 # controls how Kyuubi server pods are created during initial scale up,
 # when replacing pods on nodes, or when scaling down.
 # The default policy is `OrderedReady`, alternative policy is `Parallel`.
@@ -53,7 +58,7 @@ serviceAccount:
   # Specifies whether a ServiceAccount should be created
   create: true
   # Specifies ServiceAccount name to be used (created if `create: true`)
-  name: ~
+  name: bdp-dolphin
   # Annotations to add to the ServiceAccount
   annotations: {}
 
@@ -162,7 +167,242 @@ kyuubiConf:
 
   # The value (templated string) is used for kyuubi-defaults.conf file
   # See https://kyuubi.readthedocs.io/en/master/configuration/settings.html#kyuubi-configurations for more details
-  kyuubiDefaults: ~
+  #kyuubiDefaults: ~
+  kyuubiDefaults: |
+    kyuubi.authentication=NONE
+    kyuubi.frontend.bind.host=10.0.0.1
+    kyuubi.engine.type=SPARK_SQL
+    kyuubi.engine.share.level=USER
+    kyuubi.session.engine.initialize.timeout=PT3M
+    kyuubi.ha.addresses=zk1:2181,zk2:2181,zk3:2181
+    kyuubi.ha.namespace=kyuubi
+
+    #HA configuration
+    kyuubi.ha.zookeeper.quorum=10.124.61.189:2181
+    kyuubi.ha.zookeeper.namespace=/kyuubi
+    kyuubi.ha.zookeeper.session.timeout=60000
+
+    #LDAP configuration，这里只需要修改bind.dn
+    kyuubi.session.group.provider=ldap
+    kyuubi.session.group.ldap.based.dn=dc=dfg,dc=com
+    kyuubi.session.group.ldap.bind.dn=cn=admin,dc=dfg,dc=com
+    kyuubi.session.group.ldap.bind.password=Cn#cV!zV_7nc+S6(kd_9
+    kyuubi.session.group.ldap.group.member.attr=memberUid
+    kyuubi.session.group.ldap.group.name.attr=cn
+    kyuubi.session.group.ldap.group.search.filter=(objectClass=posixGroup)
+    kyuubi.session.group.ldap.url=ldap://bdp-openldap:389
+    kyuubi.session.group.ldap.user.search.filter=(&(objectClass=person)(cn={0}))
+
+    ## session configuration
+    kyuubi.session.idle.timeout=PT6H
+
+    ## engine configuration
+    # common configuration
+    kyuubi.engine.share.level=GROUP
+    kyuubi.session.engine.check.interval=PT1M
+    kyuubi.session.engine.idle.timeout=PT30M
+    kyuubi.engine.spark.group.dregetl.idle.timeout = PT5M
+    kyuubi.engine.spark.group.dlargeetl.idle.timeout = PT5M
+    kyuubi.engine.spark.group.dadhoc.idle.timeout = PT480M
+    kyuubi.engine.spark.group.nregetl.idle.timeout = PT5M
+    kyuubi.engine.spark.group.nlageetl.idle.timeout = PT5M
+    kyuubi.kubernetes.terminatedApplicationRetainPeriod=PT1M
+
+    #trino engine 这里的url catalog  密码需要根据实际填写，密码是ldap中配置的admin应用用户的密码
+    kyuubi.session.engine.trino.connection.url=https://trinoxc-dev.dfmc.com.cn
+    kyuubi.session.engine.trino.connection.catalog=s3dev
+    #trino开启了https需要以下配置
+    kyuubi.engine.trino.connection.insecure.enabled=true
+    kyuubi.engine.trino.connection.user=admin
+    kyuubi.engine.trino.connection.password=vpLu-7HxEogR7o3.q.x3
+
+    #spark engine
+    kyuubi.kubernetes.spark.cleanupTerminatedDriverPod.kind=COMPLETED
+    # admin 配置规则
+    ___admin___.spark.app.name=sparkSQL-admin-rule
+    ___admin___.spark.executor.instances=1
+    ___admin___.spark.driver.cores=1
+    ___admin___.spark.executor.cores=1
+    ___admin___.spark.kubernetes.driver.limit.cores=1
+    ___admin___.spark.kubernetes.executor.limit.cores=1
+    ___admin___.spark.driver.memory=1g
+    ___admin___.spark.executor.memory=1g
+    ___admin___.spark.kubernetes.executor.label.applicationId=application-spark-admin
+    ___admin___.spark.kubernetes.driver.label.applicationId=application-spark-admin
+    ___admin___.spark.kubernetes.executor.label.queue=root.tenants.dfg.bigdata.spark
+    ___admin___.spark.kubernetes.driver.label.queue=root.tenants.dfg.bigdata.spark
+    ___admin___.spark.eventLog.enabled=true
+    ___admin___.spark.eventLog.compress=true
+    ___admin___.spark.eventLog.dir=/opt/spark/eventlog
+    ___admin___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___admin___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___admin___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___admin___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___admin___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___admin___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___admin___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.path=/var/data
+    ___admin___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.readOnly=false
+    ___admin___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.options.claimName=spark-shuffle-pvc
+    ___admin___.spark.shuffle.sort.io.plugin.class=org.apache.spark.shuffle.KubernetesLocalDiskShuffleDataIO
+    ___admin___.spark.shuffle.cleaner.interval=10s
+
+
+    # 白天常规ETL engine
+    ___dregetl___.spark.app.name=D-Regular-ETL
+    ___dregetl___.spark.executor.instances=2
+    ___dregetl___.spark.driver.cores=1
+    ___dregetl___.spark.executor.cores=1
+    ___dregetl___.spark.kubernetes.driver.limit.cores=1
+    ___dregetl___.spark.kubernetes.executor.limit.cores=1
+    ___dregetl___.spark.driver.memory=1g
+    ___dregetl___.spark.executor.memory=1g
+    ___dregetl___.spark.kubernetes.executor.label.applicationId=application-spark-dregetl
+    ___dregetl___.spark.kubernetes.driver.label.applicationId=application-spark-dregetl
+    ___dregetl___.spark.kubernetes.executor.label.queue=root.tenants.dfg.bigdata.spark
+    ___dregetl___.spark.kubernetes.driver.label.queue=root.tenants.dfg.bigdata.spark
+    ___dregetl___.spark.eventLog.enabled=true
+    ___dregetl___.spark.eventLog.compress=true
+    ___dregetl___.spark.eventLog.dir=/opt/spark/eventlog
+    ___dregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___dregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___dregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___dregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___dregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___dregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___dregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.path=/var/data
+    ___dregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.readOnly=false
+    ___dregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.options.claimName=spark-shuffle-pvc
+    ___dregetl___.spark.shuffle.sort.io.plugin.class=org.apache.spark.shuffle.KubernetesLocalDiskShuffleDataIO
+    ___dregetl___.spark.shuffle.cleaner.interval=10s
+
+    # 白天大资源消耗 ETL engine
+    ___dbigetl___.spark.app.name=D-Big-ETL
+    ___dbigetl___.spark.executor.instances=1
+    ___dbigetl___.spark.driver.cores=1
+    ___dbigetl___.spark.executor.cores=1
+    ___dbigetl___.spark.kubernetes.driver.limit.cores=1
+    ___dbigetl___.spark.kubernetes.executor.limit.cores=1
+    ___dbigetl___.spark.driver.memory=1g
+    ___dbigetl___.spark.executor.memory=1g
+    ___dbigetl___.spark.kubernetes.executor.label.applicationId=application-spark-dbigetl
+    ___dbigetl___.spark.kubernetes.driver.label.applicationId=application-spark-dbigetl
+    ___dbigetl___.spark.kubernetes.executor.label.queue=root.tenants.dfg.bigdata.spark
+    ___dbigetl___.spark.kubernetes.driver.label.queue=root.tenants.dfg.bigdata.spark
+    ___dbigetl___.spark.eventLog.enabled=true
+    ___dbigetl___.spark.eventLog.compress=true
+    ___dbigetl___.spark.eventLog.dir=/opt/spark/eventlog
+    ___dbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___dbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___dbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___dbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___dbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___dbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___dbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.path=/var/data
+    ___dbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.readOnly=false
+    ___dbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.options.claimName=spark-shuffle-pvc
+    ___dbigetl___.spark.shuffle.sort.io.plugin.class=org.apache.spark.shuffle.KubernetesLocalDiskShuffleDataIO
+    ___dbigetl___.spark.shuffle.cleaner.interval=10s
+
+    # 白天AD-HOC query engine
+    ___ad-hoc___.spark.app.name=AD-HOC
+    #任务资源配置
+    ___ad-hoc___.spark.driver.cores=1
+    ___ad-hoc___.spark.executor.cores=1
+    ___ad-hoc___.spark.kubernetes.driver.limit.cores=1
+    ___ad-hoc___.spark.kubernetes.executor.limit.cores=1
+    ___ad-hoc___.spark.driver.memory=1g
+    ___ad-hoc___.spark.executor.memory=1g
+    ___ad-hoc___.spark.dynamicAllocation.enabled=true
+    ___ad-hoc___.spark.dynamicAllocation.shuffleTracking.enabled=true
+    # —— Executor 回收节奏 ——  
+    # 执行完所有 task 且空闲 6 分钟后回收
+    ___ad-hoc___.spark.dynamicAllocation.executorIdleTimeout=6m   
+    # 带 shuffle data 的 Executor 至少保留 5 分钟       
+    ___ad-hoc___.spark.dynamicAllocation.shuffleTracking.timeout=5m          
+    # —— 扩容节奏 ——  
+    ___ad-hoc___.spark.dynamicAllocation.schedulerBacklogTimeout=1s
+    ___ad-hoc___.spark.dynamicAllocation.sustainedSchedulerBacklogTimeout = 30s
+    ___ad-hoc___.spark.dynamicAllocation.minExecutors=1
+    ___ad-hoc___.spark.dynamicAllocation.maxExecutors=5
+    ___ad-hoc___.spark.dynamicAllocation.initialExecutors=2
+    #任务队列标签配置
+    ___ad-hoc___.spark.kubernetes.executor.label.applicationId=application-spark-ad-hoc
+    ___ad-hoc___.spark.kubernetes.driver.label.applicationId=application-spark-ad-hoc
+    ___ad-hoc___.spark.kubernetes.executor.label.queue=root.tenants.dfg.bigdata.spark
+    ___ad-hoc___.spark.kubernetes.driver.label.queue=root.tenants.dfg.bigdata.spark
+    #任务日志配置
+    ___ad-hoc___.spark.eventLog.enabled=true
+    ___ad-hoc___.spark.eventLog.compress=true
+    ___ad-hoc___.spark.eventLog.rolling.enabled=true
+    ___ad-hoc___.spark.eventLog.rolling.maxFileSize=64m
+    ___ad-hoc___.spark.eventLog.dir=/opt/spark/eventlog
+    ___ad-hoc___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___ad-hoc___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___ad-hoc___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___ad-hoc___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___ad-hoc___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___ad-hoc___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    #任务shuffle数据配置
+    ___ad-hoc___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.path=/var/data
+    ___ad-hoc___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.readOnly=false
+    ___ad-hoc___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.options.claimName=spark-shuffle-pvc
+    ___ad-hoc___.spark.shuffle.cleaner.interval=10s
+
+    # 晚上常规ETL engine
+    ___nregetl___.spark.app.name=N-Regular-ETL
+    ___nregetl___.spark.executor.instances=1
+    ___nregetl___.spark.driver.cores=1
+    ___nregetl___.spark.executor.cores=2
+    ___nregetl___.spark.kubernetes.driver.limit.cores=1
+    ___nregetl___.spark.kubernetes.executor.limit.cores=2
+    ___nregetl___.spark.driver.memory=1g
+    ___nregetl___.spark.executor.memory=1g
+    ___nregetl___.spark.kubernetes.executor.label.applicationId=application-spark-nregetl
+    ___nregetl___.spark.kubernetes.driver.label.applicationId=application-spark-nregetl
+    ___nregetl___.spark.kubernetes.executor.label.queue=root.tenants.dfg.bigdata.spark
+    ___nregetl___.spark.kubernetes.driver.label.queue=root.tenants.dfg.bigdata.spark
+    ___nregetl___.spark.eventLog.enabled=true
+    ___nregetl___.spark.eventLog.compress=true
+    ___nregetl___.spark.eventLog.dir=/opt/spark/eventlog
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nregetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.path=/var/data
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.readOnly=false
+    ___nregetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.options.claimName=spark-shuffle-pvc
+    ___nregetl___.spark.shuffle.sort.io.plugin.class=org.apache.spark.shuffle.KubernetesLocalDiskShuffleDataIO
+    ___nregetl___.spark.shuffle.cleaner.interval=10s
+
+    # 晚上大资源消耗ETL engine
+    ___nbigetl___.spark.app.name=N-Big-ETL
+    ___nbigetl___.spark.executor.instances=1
+    ___nbigetl___.spark.driver.cores=1
+    ___nbigetl___.spark.executor.cores=2
+    ___nbigetl___.spark.kubernetes.driver.limit.cores=1
+    ___nbigetl___.spark.kubernetes.executor.limit.cores=2
+    ___nbigetl___.spark.driver.memory=1g
+    ___nbigetl___.spark.executor.memory=1g
+    ___nbigetl___.spark.kubernetes.executor.label.applicationId=application-spark-nbigetl
+    ___nbigetl___.spark.kubernetes.driver.label.applicationId=application-spark-nbigetl
+    ___nbigetl___.spark.kubernetes.executor.label.queue=root.tenants.dfg.bigdata.spark
+    ___nbigetl___.spark.kubernetes.driver.label.queue=root.tenants.dfg.bigdata.spark
+    ___nbigetl___.spark.eventLog.enabled=true
+    ___nbigetl___.spark.eventLog.compress=true
+    ___nbigetl___.spark.eventLog.dir=/opt/spark/eventlog
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nbigetl___.spark.kubernetes.driver.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.path=/opt/spark/eventlog
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.mount.readOnly=false
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.eventlog-data.options.claimName=bdp-spark-history-server
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.path=/var/data
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.mount.readOnly=false
+    ___nbigetl___.spark.kubernetes.executor.volumes.persistentVolumeClaim.shuffle-data.options.claimName=spark-shuffle-pvc
+    ___nbigetl___.spark.shuffle.sort.io.plugin.class=org.apache.spark.shuffle.KubernetesLocalDiskShuffleDataIO
+    ___nbigetl___.spark.shuffle.cleaner.interval=10s
 
 # The value (templated string) is used for log4j2.xml file
   # See example at conf/log4j2.xml.template https://kyuubi.readthedocs.io/en/master/configuration/settings.html#logging for more details
@@ -217,25 +457,25 @@ sparkConf:
   # See example at https://github.com/apache/spark/blob/master/conf/spark-defaults.conf.template and Spark documentation for more details
 #  sparkDefaults: ~
   sparkDefaults: |
+    spark.master=k8s://https://kubernetes.default.svc:443
     spark.submit.deployMode=cluster
-    spark.kubernetes.container.image=registry.dfmc.com.cn/datahub/spark:3.5.2
-    spark.kubernetes.authenticate.driver.serviceAccountName=spark
-    spark.kubernetes.file.upload.path=s3a://dfmdctest-bdp-test/kyuubi/spark
-    # S3 dependencies
-    spark.jars.packages=org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262
-    spark.driver.extraJavaOptions=-Divy.cache.dir=/tmp -Divy.home=/tmp
+    spark.kubernetes.namespace=sjzt-dev
+    spark.kubernetes.container.image=apache/spark:3.5.4-arm
+    spark.kubernetes.authenticate.driver.serviceAccountName=bdp-dolphin
+    spark.kubernetes.file.upload.path=s3a://dfg-bdp-dev/kyuubi/spark
     # S3A configuration
     spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
-    spark.hadoop.fs.s3a.endpoint=http://10.83.4.205:8060
-    spark.hadoop.fs.s3a.access.key=6NTWJGZLSK1Y9F38WC48
-    spark.hadoop.fs.s3a.secret.key=IY7mBaNTI3Y7u6ZO0x02FqYu87IDOdkELzTlAdM5
+    spark.hadoop.fs.s3a.endpoint=http://object-storage:80
+    spark.hadoop.fs.s3a.access.key=******
+    spark.hadoop.fs.s3a.secret.key=********
     spark.hadoop.fs.s3a.path.style.access=true
     spark.hadoop.fs.s3a.fast.upload=true
-    #paimon ranger metastore configuration
     spark.sql.extensions=org.apache.kyuubi.plugin.spark.authz.ranger.RangerSparkExtension,org.apache.paimon.spark.extensions.PaimonSparkSessionExtensions
     spark.sql.catalog.paimon=org.apache.paimon.spark.SparkCatalog
-    spark.sql.catalog.paimon.warehouse=s3a://dfmdctest-bdp-test/paimon
-    spark.hive.metastore.uris=thrift://hive-me-femkx7.yhsjztcphj1-dev:9083
+    spark.sql.catalog.paimon.warehouse=s3a://dfg-bdp-dev/paimon
+    spark.hive.metastore.uris=thrift://bdp-hive-metastore:9083
+    spark.hadoop.mapreduce.fileoutputcommitter.marksuccessfuljobs=false
+    spark.sql.adaptive.enabled=true
 
   # The value (templated string) is used for log4j2.properties file
   # See example at https://github.com/apache/spark/blob/master/conf/log4j2.properties.template and Spark documentation for more details
@@ -244,65 +484,64 @@ sparkConf:
   # The value (templated string) is used for metrics.properties file
   # See example at https://github.com/apache/spark/blob/master/conf/metrics.properties.template and Spark documentation for more details
   metrics: ~
-  ranger:
-    audit: |
-      <configuration>
+  rangerSparkAudit: |
+        <configuration>
+            <property>
+                <name>xasecure.audit.is.enabled</name>
+                <value>true</value>
+            </property>
+            <property>
+                <name>xasecure.audit.destination.elasticsearch</name>
+                <value>true</value>
+            </property>
+            <property>
+                <name>xasecure.audit.destination.elasticsearch.urls</name>
+                <value>bdp-es01</value>
+            </property>
+            <property>
+                <name>xasecure.audit.destination.elasticsearch.user</name>
+                <value>elastic</value>
+            </property>
+            <property>
+                <name>xasecure.audit.destination.elasticsearch.password</name>
+                <value>elasticsearch</value>
+            </property>
           <property>
-              <name>xasecure.audit.is.enabled</name>
-              <value>true</value>
+                <name>xasecure.audit.destination.elasticsearch.index</name>
+                <value>ranger_audits</value>
+            </property>
+          <property>
+                <name>xasecure.audit.destination.elasticsearch.port</name>
+                <value>9200</value>
+            </property>
+          <property>
+                <name>xasecure.audit.destination.elasticsearch.protocol</name>
+                <value>http</value>
+           </property>
+        </configuration>
+  rangerSparkSecurity: |
+        <configuration>
+          <property>
+            <name>ranger.plugin.spark.policy.rest.url</name>
+            <value>http://bdp-ranger-admin:6080</value>
           </property>
           <property>
-              <name>xasecure.audit.destination.elasticsearch</name>
-              <value>true</value>
+            <name>ranger.plugin.spark.service.name</name>
+            <value>sparksql</value>
           </property>
           <property>
-              <name>xasecure.audit.destination.elasticsearch.urls</name>
-              <value>es01.yhsjztcphj1-dev</value>
+            <name>ranger.plugin.spark.policy.cache.dir</name>
+            <value>/opt/spark/policycache</value>
           </property>
           <property>
-              <name>xasecure.audit.destination.elasticsearch.user</name>
-              <value>elastic</value>
+            <name>ranger.plugin.spark.policy.pollIntervalMs</name>
+            <value>5000</value>
           </property>
           <property>
-              <name>xasecure.audit.destination.elasticsearch.password</name>
-              <value>elasticsearch</value>
+            <name>ranger.plugin.spark.policy.source.impl</name>
+            <value>org.apache.ranger.admin.client.RangerAdminRESTClient</value>
           </property>
-        <property>
-              <name>xasecure.audit.destination.elasticsearch.index</name>
-              <value>ranger_audits</value>
-          </property>
-        <property>
-              <name>xasecure.audit.destination.elasticsearch.port</name>
-              <value>9200</value>
-          </property>
-        <property>
-              <name>xasecure.audit.destination.elasticsearch.protocol</name>
-              <value>http</value>
-         </property>
-      </configuration>
-    security: |
-      <configuration>
-        <property>
-          <name>ranger.plugin.spark.policy.rest.url</name>
-          <value>http://ranger-admin.yhsjztcphj1-dev:6080</value>
-        </property>
-        <property>
-          <name>ranger.plugin.spark.service.name</name>
-          <value>sparksql</value>
-        </property>
-        <property>
-          <name>ranger.plugin.spark.policy.cache.dir</name>
-          <value>/opt/spark/policycache</value>
-        </property>
-        <property>
-          <name>ranger.plugin.spark.policy.pollIntervalMs</name>
-          <value>5000</value>
-        </property>
-        <property>
-          <name>ranger.plugin.spark.policy.source.impl</name>
-          <value>org.apache.ranger.admin.client.RangerAdminRESTClient</value>
-        </property>
-      </configuration>
+        </configuration>
 
 # Command to launch Kyuubi server (templated)
 command: ~
